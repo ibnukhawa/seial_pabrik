@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_serial_pabrik_tree" model="ir.ui.view">
+            <field name="name">serial.pabrik.tree</field>
+            <field name="model">serial.number.pabrik</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Tasks"> 
+                    <field name="number_product"/> 
+                    <field name="date"/> 
+                    <field name="used_serial"/> 
+                </tree>	
+            </field>
+        </record>        
+
+        <record id="view_serial_pabrik_form" model="ir.ui.view">
+            <field name="name">serial.pabrik.form</field>
+            <field name="model">serial.number.pabrik</field>
+            <field name="arch" type="xml">
+                <form string="Sale Tasks">
+		            <sheet>
+                        <group>
+                            <field name="number_product"/>
+                            <field name="date"/>
+                            <field name="used_serial"/>
+                        </group>
+		            </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="serial_pabrik_action" model="ir.actions.act_window">
+           <field name="name">Serial Number Pabrik</field>
+            <field name="res_model">serial.number.pabrik</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_serial_pabrik_tree"/>
+        </record>
+
+        <menuitem id="menu_serial_pabrik"
+                  name="Serial Number Pabrik" 
+                  parent="stock.menu_warehouse_report"
+                  sequence="11"
+                  action="serial_pabrik_action"/>
+</odoo>
